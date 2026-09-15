@@ -1,7 +1,8 @@
-// compo.tsx
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import Button from './Button';
+import { Button } from './button';
+
+
 
 export const JAPAN_PACKAGES: TourPackage[] = [
   {
@@ -14,6 +15,7 @@ export const JAPAN_PACKAGES: TourPackage[] = [
     price: 1890,
     originalPrice: 2150,
     rating: 4.9,
+    description: "The tomb, within a garden, is in a late version of the style of earlier Mughal imperial tombs, most famously the Taj Mahal, with inside eight paradises",
     reviewsCount: 128,
     imageUrl: 'https://images.japanhighlights.com/allpicture/2023/10/6b98c1313ca14f0f9388292ac6600018_cut_600x550_505_1744304483.jpg',
     tag: 'Best Seller',
@@ -46,32 +48,16 @@ export const JAPAN_PACKAGES: TourPackage[] = [
   },
 ]
 
-export interface TourPackage {
-  id: string;
-  title: string;
-  kanjiTitle: string;
-  location: string;
-  duration: string;
-  groupSize: string;
-  price: number;
-  originalPrice?: number;
-  rating: number;
-  reviewsCount: number;
-  imageUrl: string;
-  tag?: string;
-  isPopular?: boolean;
-}
-
 interface PackageCardProps {
   pkg: TourPackage;
   className?: string;
 }
 
-export default function PackageCard({ pkg, className }: PackageCardProps) {
+export function PackageCard({ pkg, className }: PackageCardProps) {
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden bg-[#f9f6f0]",
+        "group relative flex flex-col overflow-hidden",
         "transition-colors duration-300",
         className
       )}
@@ -92,18 +78,11 @@ export default function PackageCard({ pkg, className }: PackageCardProps) {
         {/* Single accent mark, top right — quiet stand-in for tag + kanji badge */}
         <div className="absolute top-4 right-4 flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-[#BC002D]" aria-hidden />
-          {pkg.tag && (
+          {pkg.reviewsCount > 0 && (
             <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-white/90">
-              {pkg.tag}
+              <span className="text-neutral-300">{pkg.rating.toFixed(1)} ({pkg.reviewsCount})</span>
             </span>
           )}
-        </div>
-
-        {/* Kanji, bottom left, directly on the image — no pill, no blur */}
-        <div className="absolute bottom-4 left-6">
-          <span className="font-serif text-sm tracking-widest text-white/90 select-none">
-            {pkg.kanjiTitle}
-          </span>
         </div>
       </div>
 
@@ -121,13 +100,11 @@ export default function PackageCard({ pkg, className }: PackageCardProps) {
             <span>{pkg.duration}</span>
             <span className="text-stone-300">·</span>
             <span>{pkg.groupSize}</span>
-            <span className="text-stone-300">·</span>
-            <span className="text-stone-700">{pkg.rating.toFixed(1)} ({pkg.reviewsCount})</span>
           </div>
         </div>
 
         {/* Price & CTA Footer */}
-        <div className="mt-6 flex items-end justify-between border-t border-[#E8E2D5] pt-4 pb-1">
+        <div className="mt-6 flex items-end justify-between pt-4 pb-1">
           <div>
             <span className="block text-[10px] tracking-widest uppercase text-stone-400">From</span>
             <div className="flex items-baseline gap-2">
@@ -143,7 +120,7 @@ export default function PackageCard({ pkg, className }: PackageCardProps) {
             iconPosition="right"
             aria-label="Select Package"
           >
-            Get Quote
+            View Package
           </Button>
         </div>
       </div>

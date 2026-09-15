@@ -14,16 +14,16 @@ interface SectionTitleProps {
   englishClassName?: string
 }
 
-const SectionTitle = ({
+export function SectionTitle({
   japanese,
   english,
   className = '',
   japaneseClassName = '',
   englishClassName = '',
-}: SectionTitleProps) => {
+}: SectionTitleProps){
   return (
     <section
-      className={`relative flex w-full flex-col items-center justify-center space-y-12 overflow-hidden py-16 ${mplus.className} ${className}`}
+      className={`relative flex w-full flex-col items-center justify-center m-0 overflow-hidden py-16 ${mplus.className} ${className}`}
     >
       {/* Heading Container */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 text-center">
@@ -36,7 +36,7 @@ const SectionTitle = ({
 
         {/* Foreground English Text */}
         <p
-          className={`absolute bottom-6 mt-2 text-sm font-extrabold uppercase tracking-[0.3em] text-[#285340] text-shadow-lg md:text-lg ${englishClassName}`}
+          className={`absolute bottom-6 text-sm font-extrabold uppercase tracking-[0.3em] text-[#285340] text-shadow-lg md:text-lg ${englishClassName}`}
         >
           {english}
         </p>
@@ -44,5 +44,3 @@ const SectionTitle = ({
     </section>
   )
 }
-
-export default SectionTitle

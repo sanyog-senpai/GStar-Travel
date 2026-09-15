@@ -1,34 +1,12 @@
 "use client"
 
-import { MegaMenuColumn } from "./NavItems"
-
+import type { MegaMenuColumn } from "./nav-items"
 
 interface MegaMenuProps {
   columns: MegaMenuColumn[]
 }
 
-/**
- * Generic mega-menu panel.
- *
- * IMPORTANT: must be rendered inside an ancestor carrying the `group`
- * class (the <li> wrapping the trigger link in Navbar.tsx). Visibility
- * is driven entirely by CSS `group-hover` / `group-focus-within` —
- * there is no JS mouseenter/mouseleave/timer logic here.
- *
- * Why: JS-timer-based hover tracking races against the pointer crossing
- * the gap between the trigger and the panel, which is what caused the
- * "closes mid-hover" flicker. CSS `:hover` on an ancestor stays true for
- * as long as the pointer is over the ancestor OR any descendant —
- * including this panel, wherever it's absolutely positioned — so the
- * dropdown can never lose hover state while the pointer is still over it.
- *
- * Width is computed from `columns.length` via inline `gridTemplateColumns`
- * (Tailwind classes can't be generated from a dynamic number at build
- * time), so adding/removing a column in nav-items.ts automatically grows
- * or shrinks the panel — a single column collapses to one track instead
- * of stretching to fill a fixed min-width.
- */
-export const MegaMenu = ({ columns }: MegaMenuProps) => {
+export function MegaMenu({ columns }: MegaMenuProps) {
   return (
     <div
       className="invisible absolute left-1/2 top-full -translate-x-1/2 -translate-y-2 pt-4 opacity-0 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100"
@@ -65,5 +43,3 @@ export const MegaMenu = ({ columns }: MegaMenuProps) => {
     </div>
   )
 }
-
-export default MegaMenu

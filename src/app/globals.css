@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+
+  /* Brand Colors */
+  --primary: #285340;
+  --secondary: #F5A623;
+
+  /* Dedicated Text Colors */
+  --text-muted: #d9d9d9;
+  --text-main: #343434;
+}
+
+@theme {
+  /* Fonts */
+  --font-inter: var(--font-inter), sans-serif;
+  --font-poppins: var(--font-poppins), sans-serif;
+  --font-roboto: var(--font-roboto), sans-serif;
+  --font-cormorant-unicase: var(--font-cormorant-unicase), serif;
+  --font-great-vibes: var(--font-great-vibes), cursive;
+  --font-netflix-sans: var(--font-netflix-sans), sans-serif;
+
+  /* Brand Utilities (bg-primary, text-primary, etc.) */
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+
+  /* Specific Text Utilities (text-muted, text-main, etc.) */
+  --color-muted: var(--text-muted);
+  --color-main: var(--text-main);
+}

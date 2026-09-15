@@ -2,15 +2,14 @@
 
 import { useState } from "react"
 import clsx from "clsx"
-import { NAV_ITEMS } from "./NavItems"
+import { NAV_ITEMS } from "./nav-items"
 
 interface HamburgerButtonProps {
   isOpen: boolean
   onClick: () => void
 }
 
-/** Animated hamburger <-> close (X) icon button. */
-export const HamburgerButton = ({ isOpen, onClick }: HamburgerButtonProps) => {
+export function HamburgerButton({ isOpen, onClick }: HamburgerButtonProps) {
   return (
     <button
       type="button"
@@ -49,13 +48,13 @@ interface MobileMenuProps {
 }
 
 /** Slide-down mobile nav panel with accordion-style mega menus. */
-export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const [openAccordion, setOpenAccordion] = useState<string | null>(null)
 
   return (
     <div
       className={clsx(
-        "absolute inset-x-0 top-full mt-3 origin-top overflow-hidden rounded-3xl border border-white/10 bg-[#1d1e19]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden",
+        "absolute inset-x-0 top-full mt-3 origin-top overflow-hidden rounded-3xl border border-white/10 bg-[#1d1e19]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] md:hidden mx-3",
         isOpen
           ? "max-h-[80vh] scale-100 opacity-100"
           : "pointer-events-none max-h-0 scale-95 opacity-0"
@@ -137,5 +136,3 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
     </div>
   )
 }
-
-export default MobileMenu
