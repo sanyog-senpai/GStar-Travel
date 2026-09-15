@@ -45,10 +45,6 @@ const eslintConfig = defineConfig([
           format: ["camelCase", "UPPER_CASE"],
         },
         {
-          selector: "function",
-          format: ["PascalCase"],
-        },
-        {
           selector: "typeLike",
           format: ["PascalCase"],
         },

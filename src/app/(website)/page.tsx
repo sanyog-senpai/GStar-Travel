@@ -1,4 +1,5 @@
 import HeroSection from "./sections/hero-section";
+import { CustomItinerary } from "./sections/custom-itinerary";
 import { Packages } from "./sections/packages";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <>
       <HeroSection />
       <Packages />
+      <CustomItinerary />
     </>
   );
 }

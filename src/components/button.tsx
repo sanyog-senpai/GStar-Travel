@@ -22,10 +22,10 @@ const baseStyles =
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
     "bg-white leading-6 text-[#1d1e19] text-xs sm:text-sm px-4 py-2 sm:px-5 sm:py-2.5 " +
-    "shadow-sm shadow-black/20 hover:bg-white/90 hover:scale-[1.02]",
+    "shadow-sm shadow-black/20 hover:bg-white/90 hover:scale-[1.01]",
   secondary:
-    "bg-[#285340] leading-6 text-white text-xs sm:text-sm px-4 py-2 sm:px-5 sm:py-2.5 " +
-    "shadow-sm shadow-black/20 hover:bg-[#285340]/90 hover:scale-[1.02]",
+    "bg-[#285340] leading-6 text-white text-xs text-normal sm:text-sm px-6 py-2 sm:px-6 sm:py-2 " +
+    "shadow-sm shadow-black/20 hover:bg-[#285340]/90 hover:scale-[1.01]",
   ghost:
     "bg-white/10 leading-6 text-white/90 text-xs sm:text-sm border border-white/10 backdrop-blur-md " +
     "px-3 py-1.5 sm:px-4 sm:py-2 hover:bg-white/20 hover:border-white/20 hover:scale-[1.02]",
@@ -33,15 +33,7 @@ const variantStyles: Record<ButtonVariant, string> = {
     "text-white/80 leading-6 text-sm px-2 py-1 hover:text-white",
 }
 
-/**
- * Reusable CTA/button component.
- *
- * `className` is merged *after* the variant styles via clsx, so callers
- * can override anything (padding, colors, radius, etc.) without touching
- * this file:
- *
- *   <Button variant="primary" className="px-8 py-3 text-base">Book now</Button>
- */
+
 export function Button({
   children,
   variant = "primary",
